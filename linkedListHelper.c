@@ -14,7 +14,7 @@ square * add_To_Start(square *chain_Head, square *new_Square){
     new_Square->prev_square = NULL;
     chain_Head->prev_square = new_Square;
 
-    //Return teh new chain head, it is essential that the caller updates to this
+    //Return the new chain head, it is essential that the caller updates to this
     return new_Square;
 
 }
@@ -39,7 +39,7 @@ void add_To_End(square *chain_Head, square *new_Square){
 }
 
 /**
- *
+ *  Adds a square to the linked list between two existing squares in the chain
  * @param before_Square
  * @param following_Square
  * @param new_Square

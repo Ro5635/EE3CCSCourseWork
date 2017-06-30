@@ -3,6 +3,7 @@
 
 CMakeFiles/CCourseWork.dir/gameBorad.c.o: ../gameBorad.c
 CMakeFiles/CCourseWork.dir/gameBorad.c.o: ../gameBorad.h
+CMakeFiles/CCourseWork.dir/gameBorad.c.o: ../inputReadHandlers.h
 CMakeFiles/CCourseWork.dir/gameBorad.c.o: ../linkedListHelper.h
 
 CMakeFiles/CCourseWork.dir/inputReadHandlers.c.o: ../gameBorad.h
@@ -11,6 +12,7 @@ CMakeFiles/CCourseWork.dir/inputReadHandlers.c.o: ../inputReadHandlers.h
 CMakeFiles/CCourseWork.dir/inputReadHandlers.c.o: ../linkedListHelper.h
 
 CMakeFiles/CCourseWork.dir/linkedListHelper.c.o: ../gameBorad.h
+CMakeFiles/CCourseWork.dir/linkedListHelper.c.o: ../inputReadHandlers.h
 CMakeFiles/CCourseWork.dir/linkedListHelper.c.o: ../linkedListHelper.c
 CMakeFiles/CCourseWork.dir/linkedListHelper.c.o: ../linkedListHelper.h
 

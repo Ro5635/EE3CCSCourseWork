@@ -16,8 +16,7 @@ action * get_New_Action(int destination_Square_No, action_Types action_Type ){
 }
 
 /**
- *
- *
+ *  Gets a new square data structure.
  * When called with NULL as the pre_square this will create an isolated square that is not in a data structure
  * @return
  */
@@ -37,7 +36,7 @@ square * get_New_Square(int square_num, square *prev_square, action *squares_act
 }
 
 /**
- * Creates a new empty game board, the squares are not initilised and the squares data structure is Null
+ * Creates a new empty game board, the squares are not initialised and the squares data structure is Null
  * @return
  */
 board * get_New_Board(){
@@ -51,6 +50,10 @@ board * get_New_Board(){
 
 }
 
+/**
+ * Gets a new empty board print data structure, all of the structures required to print the game board are added to this
+ * @return
+ */
 board_Print_Data * get_New_Board_Print_Structure(){
     board_Print_Data * new_board_data = (struct board_Print_Data*) malloc(sizeof(struct board_Print_Data));
     new_board_data->game_board = NULL;
@@ -64,9 +67,9 @@ board_Print_Data * get_New_Board_Print_Structure(){
 }
 
 /**
- *
- * @param existing_Board
- * @param new_Square
+ * Adds the square that is passed by reference to the board data structure in the correct position.
+ * @param existing_Board    reference to the existing board structure to add the square to
+ * @param new_Square    The new square to add to the data structure
  * @return
  */
 void * add_New_Square_To_Board(board *existing_Board, square *new_Square){
@@ -140,10 +143,11 @@ void int_print_Square(int square_Num){
 }
 
 /**
- * Prints a row Forwards
- * @param game_board
- * @param action_Square_Pointer
- * @param current_Index
+ * Prints a row Forwards, will require jumping to the last square in this row and then using the previus link in the
+ * chain to print all of the action squares in this line
+ * @param game_board    The game board to use
+ * @param   action_Square_Pointer Pointer to the current square in the linked list
+ * @param    current_Index Current Index value
  * @return
  */
 void print_Forward_Row(board_Print_Data *board_Data){
@@ -237,7 +241,8 @@ void print_Backward_Row(board_Print_Data *board_Data){
 }
 
 /**
- * Prints out the supplied game borad to the standard output stream
+ * Prints out the supplied game board to the standard output stream, it is printed with the last line first and
+ * first line last, this is so that it apperes the correct way up in the standard output stream.
  * @param game_board
  */
 void print_Game_Board(board *game_board){
@@ -272,8 +277,88 @@ void print_Game_Board(board *game_board){
 
 }
 
+
+
 /**
- *
+ *  Interprets the game board file from std input, returns a square containing an action, expects only a single line of
+ *  input from the game board file in the correct format.
+ *  Requires the use of the functions in the inputreadhandlers.c file
+ * @param line a line from the game board file
+ * @return a new square, this has NULL for the next and prev square
+ */
+square * interpert_Game_Board_File_Line(char *line){
+    int first_Num;
+    int second_Num;
+
+    //deliminator for splitting up input
+    const char s = ' ';
+    char *token;
+
+    /* get the first token */
+    token = strtok(line, &s);
+
+    if(token != NULL){
+        get_int_From_Buffer(token, &first_Num);
+    }else{
+        //Error in the file format
+        printf("Syntax Error In File, There should be two numbers per line");
+        exit(1);
+    }
+
+    //Get the next token
+    token = strtok(NULL, &s);
+
+    if(token != NULL){
+        get_int_From_Buffer(token, &second_Num);
+    }else{
+        //Error in the file format
+        printf("Syntax Error In File, There should be two numbers per line. The second number was not present.");
+        exit(1);
+
+    }
+
+    //Ensure that the second number is smaller than the first
+    if(first_Num <= second_Num){
+        //Error state, the second number must be smaller
+        printf("Error In File, the second number must be smaller!");
+        exit(1);
+
+    }
+
+    //Build the new action
+    action * new_action;
+
+    //Check it is not the end of the file
+    if(second_Num != 0) {
+
+        //If the second number is negative then it is a snake, the action should then be displayed on the first number
+        if (second_Num < 0) {
+            //Its a snake!, second_Num is negative, *-1 to make positive
+            second_Num = second_Num * -1;
+            new_action = get_New_Action(second_Num, SNAKE);
+            //Return an isolated square
+            return get_New_Square(first_Num, NULL, new_action);
+
+        } else {
+            //It's a Ladder
+            new_action = get_New_Action(first_Num, LADDER);
+            //Return an isolated square
+            return get_New_Square(second_Num, NULL, new_action);
+
+        }
+    }else{
+        //It is the end of the file
+        new_action = get_New_Action(0, ENDOFBOARD);
+        //return the isolated square
+        return get_New_Square(first_Num, NULL, new_action);
+
+    }
+
+
+}
+
+/**
+ *  This is a unit test for the game board structures, this will exit with a message if there is a failure in a test.
  */
 void test_Square_Structure(){
     //make a board:

@@ -1,14 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "gameBorad.h"
-#include "inputReadHandlers.h"
 #include <math.h>
 
 
 int main() {
 
-    //Test the square structure, optionally run for unit test by uncommenting:
-    //test_Square_Structure();
+    //Test the square structure, if a test fails the program will exit with a debug message.
+    test_Square_Structure();
 
     //make a board:
     board *game_board = get_New_Board();
@@ -31,9 +30,10 @@ int main() {
     }while(new_square->action->action_type != ENDOFBOARD);
 
 
-    //Extract limit data from the end square, it is assumed all are squares:
+    //Extract limit data from the end square, it is assumed boards all are square:
     double sqrt_Of_Max_Square = sqrt(new_square->no);
 
+    //If it is not a square then exit with debug message.
     if(fmod(sqrt_Of_Max_Square, 1) != 0){
         //It's not a square board!
         //This is an exit condition!
@@ -57,6 +57,5 @@ int main() {
 
     //Done
     exit(0);
-
 
 }

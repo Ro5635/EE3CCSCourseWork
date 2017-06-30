@@ -17,6 +17,8 @@ stdlib.h
 -
 linkedListHelper.h
 /home/robert/Documents/University/EE/EE3EDT/CModule/CCourseWork/linkedListHelper.h
+inputReadHandlers.h
+/home/robert/Documents/University/EE/EE3EDT/CModule/CCourseWork/inputReadHandlers.h
 
 /home/robert/Documents/University/EE/EE3EDT/CModule/CCourseWork/inputReadHandlers.c
 inputReadHandlers.h
@@ -47,8 +49,6 @@ stdlib.h
 -
 gameBorad.h
 /home/robert/Documents/University/EE/EE3EDT/CModule/CCourseWork/gameBorad.h
-inputReadHandlers.h
-/home/robert/Documents/University/EE/EE3EDT/CModule/CCourseWork/inputReadHandlers.h
 math.h
 -
 

@@ -1,5 +1,6 @@
 //
 // Created by robert on 25/06/17.
+// Header file for the input handlers
 //
 
 #ifndef CCOURSEWORK_INPUTREADHANDLERS_H
@@ -17,6 +18,5 @@
 
 int get_int_from_stdin(int *value);
 int get_char_array_from_stdin(char *name);
-square * interpert_Game_Board_File_Line(char *line);
 
 #endif //CCOURSEWORK_INPUTREADHANDLERS_H

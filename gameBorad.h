@@ -22,7 +22,7 @@ typedef struct action{
 
 
 /**
- *  Represents a square on teh borad, has atributes such as square number.
+ *  Represents a square on teh board, has attributes such as square number.
  */
 typedef struct square{
     int no;
@@ -45,7 +45,7 @@ typedef struct board{
 } board;
 
 /**
- * Data structure used to hold the atributes needed in printing out the board
+ * Data structure used to hold the attributes needed in printing out the board
  */
 typedef struct board_Print_Data{
     int index;
@@ -65,6 +65,7 @@ void int_print_Square(int square_Num);
 void print_Forward_Row(board_Print_Data *board_Data);
 void print_Backward_Row(board_Print_Data *board_Data);
 void print_Game_Board(board *game_board);
+square * interpert_Game_Board_File_Line(char *line);
 
 //Unit Tests
 void test_Square_Structure();
@@ -72,6 +73,7 @@ void test_Square_Structure();
 #include <stdio.h>
 #include <stdlib.h>
 #include "linkedListHelper.h"
+#include "inputReadHandlers.h"
 
 
 #endif //CCOURSEWORK_GAMEBORAD_H

@@ -1,5 +1,6 @@
 //
 // Created by robert on 25/06/17.
+// Header file for the linked list helpers.
 //
 
 #ifndef CCOURSEWORK_LINKEDLISTHELPER_H
